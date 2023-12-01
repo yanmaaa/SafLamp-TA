@@ -6,7 +6,8 @@ const char* ssid = "masis";
 const char* pass = "sandikeras";
 const char* token = "6682234876:AAHtFtP-zpqXYklpXUaDfxHwiceMrWVC0NA";    
 
-int led = 16; 
+int led1 = 16;
+int led2 = 5; 
 
 void setup() 
 {
@@ -31,8 +32,11 @@ void setup()
   Serial.print("\nTest Telegram connection... ");
   myBot.begin() ? Serial.println("OK") : Serial.println("NOK");
 
-  pinMode(led, OUTPUT);
-  digitalWrite(led, HIGH); 
+  pinMode(led1, OUTPUT);
+  digitalWrite(led1, HIGH); 
+
+  pinMode(led2, OUTPUT);
+  digitalWrite(led2, HIGH);
 }
 
 void loop() 
@@ -43,13 +47,23 @@ void loop()
   {
     if (msg.text.equalsIgnoreCase("Off")) 
     {      
-      digitalWrite(led, LOW);                          
+      digitalWrite(led1, LOW);                          
       myBot.sendMessage(msg, "Light is now Off");        
     }
     else if (msg.text.equalsIgnoreCase("On")) 
     {       
-      digitalWrite(led, HIGH);                         
+      digitalWrite(led1, HIGH);                         
       myBot.sendMessage(msg, "Light is now On");      
+    }
+    else if (msg.text.equalsIgnoreCase("Off1")) 
+    {       
+      digitalWrite(led2, LOW);                         
+      myBot.sendMessage(msg, "Light2 is now Off");      
+    }
+    else if (msg.text.equalsIgnoreCase("On1")) 
+    {       
+      digitalWrite(led2, HIGH);                         
+      myBot.sendMessage(msg, "Light2 is now On");      
     }
     else 
     {                                                  
@@ -63,5 +77,6 @@ void loop()
       reply += ". Light off = Off\n";
       myBot.sendMessage(msg, reply);
     }
-  } 
+  }
 }
+
