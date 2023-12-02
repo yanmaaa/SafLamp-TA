@@ -4,7 +4,7 @@ AsyncTelegram myBot;
 
 const char* ssid = "ABYAN";
 const char* pass = "ctkleksana";
-const char* token = "6682234876:AAHtFtP-zpqXYklpXUaDfxHwiceMrWVC0NA";    
+const char* token = " ";    
 
 int led1 = 16;
 int led2 = 5; 
